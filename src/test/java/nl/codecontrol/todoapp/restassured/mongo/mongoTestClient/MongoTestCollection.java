@@ -1,18 +1,12 @@
 package nl.codecontrol.todoapp.restassured.mongo.mongoTestClient;
 
-import com.google.common.io.Resources;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class MongoTestCollection {
 
@@ -34,15 +28,8 @@ public class MongoTestCollection {
         return mongo.getDatabase(database).getCollection(collection);
     }
 
-    public void insertTestdata(String testResource) {
-        List<Document> documents = TEST_DATA_CACHE.computeIfAbsent(testResource, key -> {
-            try {
-                String json = Resources.toString(new URL(testResource), UTF_8);
-                return testResourceFormat.read(json);
-            } catch (IOException e) {
-                throw new UncheckedIOException(e);
-            }
-        });
+    public void insertTestdata(String jsonData) {
+        List<Document> documents = TEST_DATA_CACHE.computeIfAbsent(jsonData, key -> testResourceFormat.read(jsonData));
         getCollection().insertMany(documents);
 
     }
