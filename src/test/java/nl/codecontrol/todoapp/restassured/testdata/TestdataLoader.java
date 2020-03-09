@@ -39,7 +39,8 @@ public class TestdataLoader {
 
     private static String readTestResource(String testResource) {
         try {
-            return Resources.toString(new URL(testResource), UTF_8);
+            URL resourceUrl = Resources.getResource(testResource);
+            return Resources.toString(resourceUrl, UTF_8);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

@@ -16,7 +16,7 @@ public class MongoTestCollection {
     private String database;
     private String collection;
 
-    private TestResourceFormat testResourceFormat = TestResourceFormat.JSON_OBJECT_PER_LINE;
+    private TestResourceFormat testResourceFormat = TestResourceFormat.JSON;
 
     public MongoTestCollection(MongoClient mongo, String database, String collection) {
         this.mongo = mongo;
