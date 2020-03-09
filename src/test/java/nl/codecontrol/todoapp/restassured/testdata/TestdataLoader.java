@@ -12,8 +12,8 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class TestdataLoader {
 
-    private static final String[] CLEAR_BETWEEN_TESTS_COLLECTIONS = {};
-    private static final String DATABASE_NAME = "todo";
+    private static final String[] CLEAR_BETWEEN_TESTS_COLLECTIONS = {"todos"};
+    private static final String DATABASE_NAME = "test";
     private static final String TESTDATA_RESOURCES_ROOT = "testdata/";
 
     private static MongoTestClient mongoTestClient = MongoTestClientSingleton.getInstance();

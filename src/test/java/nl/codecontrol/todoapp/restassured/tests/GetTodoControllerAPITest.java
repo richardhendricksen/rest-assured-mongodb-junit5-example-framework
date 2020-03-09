@@ -13,7 +13,7 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.nullValue;
 
 
-@SpringBootTest
+@SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ExtendWith(APICallbacks.class)
 class GetTodoControllerAPITest {
 
@@ -24,7 +24,7 @@ class GetTodoControllerAPITest {
         when().
                 get("/api/todos").
         then().
-                body("$", is(emptyList())).
+                body("", is(emptyList())).
                 statusCode(200);
         //@formatter:on
     }

@@ -11,7 +11,7 @@ import static io.restassured.config.MatcherConfig.ErrorDescriptionType.HAMCREST;
 
 public class RestAssuredRequestSpecs {
 
-    private static final String BASE_URI = "http://localhost:8080";
+    private static final String BASE_URI = "http://localhost:8081";
 
     public static void setup() {
 
