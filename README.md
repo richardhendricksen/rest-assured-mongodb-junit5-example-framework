@@ -26,14 +26,14 @@ MongoAssured is used to validate the state of the database during test.
 ### Running test
 Run the tests using `mvn clean verify`.  
 
-## Set state in database
+### Set state in database
 The framework has methods to insert testdata into the database to create the needed state. Example usage:
 ```java
 insertTestdata("todos", "singleTodo");
 ```
 Which refers to collection `todo` and resourcefile `src\test\resources\testdata\todos\singleTodo.json`.
 
-## Validating database state
+### Validating database state
 For validating the state of the database a custom MongoAssured framework is used. Example usage:
 ```java
 database("test")
