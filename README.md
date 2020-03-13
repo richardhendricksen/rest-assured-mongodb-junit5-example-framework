@@ -1,4 +1,4 @@
-# REST Assured Mongodb JUnit5 example framework ![CI](https://github.com/richardhendricksen/rest-assured-mongodb-junit5-example-framework/workflows/CI/badge.svg)
+# REST Assured Mongodb JUnit5 example framework [![Build Status](https://github.com/richardhendricksen/rest-assured-mongodb-junit5-example-framework/workflows/CI/badge.svg)](https://github.com/richardhendricksen/rest-assured-mongodb-junit5-example-framework/actions?query=workflow%3ACI)
 
 This repository contains an example testframework for testing REST based services using REST Assured.  
 Custom written MongoAssert framework is used to validate the state of the embedded MongoDB during tests. All the tests and boilerplate are written using JUnit5.
@@ -46,5 +46,5 @@ database("test")
         .body("[0].createdAt", is(not(nullValue())));
 ```
 The `find()` method supports MongoDB BSON queries.  
-The `body()` method is overloaded and supports JSONPath with a Hamcrest matcher or only a Hamcrest matcher.  
+The `body()` method is overloaded and supports [JSONPath](https://github.com/json-path/JsonPath) with a Hamcrest matcher or only a Hamcrest matcher.  
 For the latter it will try to match the whole JSON body. For example `.body(is(not(nullValue())))`  
