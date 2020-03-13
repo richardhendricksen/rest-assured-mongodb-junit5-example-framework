@@ -1,11 +1,7 @@
-package nl.codecontrol.todoapp.restassured.config;
+package nl.codecontrol.todoapp.api.restassured;
 
 import io.restassured.RestAssured;
 import io.restassured.config.MatcherConfig;
-import io.restassured.specification.RequestSpecification;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import static io.restassured.config.MatcherConfig.ErrorDescriptionType.HAMCREST;
 

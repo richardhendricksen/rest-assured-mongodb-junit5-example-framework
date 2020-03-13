@@ -1,4 +1,4 @@
-package nl.codecontrol.todoapp.restassured.mongo.mongoTestClient;
+package nl.codecontrol.todoapp.api.mongo.mongoTestClient;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

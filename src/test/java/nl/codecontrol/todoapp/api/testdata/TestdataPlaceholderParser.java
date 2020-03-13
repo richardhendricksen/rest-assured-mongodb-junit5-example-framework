@@ -1,4 +1,4 @@
-package nl.codecontrol.todoapp.restassured.testdata;
+package nl.codecontrol.todoapp.api.testdata;
 
 import java.time.ZonedDateTime;
 import java.time.temporal.TemporalUnit;

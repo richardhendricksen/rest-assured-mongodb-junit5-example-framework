@@ -1,4 +1,4 @@
-package nl.codecontrol.todoapp.restassured.mongo.mongoAssured;
+package nl.codecontrol.todoapp.api.mongo.mongoAssured;
 
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
@@ -7,7 +7,6 @@ import org.hamcrest.Matcher;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.boot.jackson.JsonObjectDeserializer;
 
 import java.util.List;
 import java.util.stream.Collector;

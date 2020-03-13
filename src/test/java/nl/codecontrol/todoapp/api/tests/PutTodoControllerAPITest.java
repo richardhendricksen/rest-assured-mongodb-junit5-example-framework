@@ -1,14 +1,14 @@
-package nl.codecontrol.todoapp.restassured.tests;
+package nl.codecontrol.todoapp.api.tests;
 
 import io.restassured.http.ContentType;
-import nl.codecontrol.todoapp.restassured.junit.APICallbacks;
+import nl.codecontrol.todoapp.api.junit.APICallbacks;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static io.restassured.RestAssured.given;
-import static nl.codecontrol.todoapp.restassured.mongo.mongoAssured.MongoAssured.database;
-import static nl.codecontrol.todoapp.restassured.testdata.TestdataLoader.insertTestdata;
+import static nl.codecontrol.todoapp.api.mongo.mongoAssured.MongoAssured.database;
+import static nl.codecontrol.todoapp.api.testdata.TestdataLoader.insertTestdata;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.nullValue;

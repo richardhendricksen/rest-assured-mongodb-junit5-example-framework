@@ -1,8 +1,8 @@
-package nl.codecontrol.todoapp.restassured.testdata;
+package nl.codecontrol.todoapp.api.testdata;
 
 import com.google.common.io.Resources;
-import nl.codecontrol.todoapp.restassured.mongo.mongoTestClient.MongoTestClient;
-import nl.codecontrol.todoapp.restassured.mongo.mongoTestClient.MongoTestClientSingleton;
+import nl.codecontrol.todoapp.api.mongo.mongoTestClient.MongoTestClient;
+import nl.codecontrol.todoapp.api.mongo.mongoTestClient.MongoTestClientSingleton;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;

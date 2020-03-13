@@ -1,4 +1,4 @@
-package nl.codecontrol.todoapp.restassured.mongo.mongoAssured;
+package nl.codecontrol.todoapp.api.mongo.mongoAssured;
 
 public class MongoAssured {
 

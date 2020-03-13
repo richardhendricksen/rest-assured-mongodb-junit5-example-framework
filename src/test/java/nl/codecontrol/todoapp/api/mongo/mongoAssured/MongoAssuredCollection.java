@@ -1,7 +1,7 @@
-package nl.codecontrol.todoapp.restassured.mongo.mongoAssured;
+package nl.codecontrol.todoapp.api.mongo.mongoAssured;
 
 import com.mongodb.client.FindIterable;
-import nl.codecontrol.todoapp.restassured.mongo.mongoTestClient.MongoTestClientSingleton;
+import nl.codecontrol.todoapp.api.mongo.mongoTestClient.MongoTestClientSingleton;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.hamcrest.Matcher;

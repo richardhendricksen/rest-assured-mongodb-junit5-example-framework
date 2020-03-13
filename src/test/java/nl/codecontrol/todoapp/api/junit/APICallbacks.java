@@ -1,8 +1,8 @@
-package nl.codecontrol.todoapp.restassured.junit;
+package nl.codecontrol.todoapp.api.junit;
 
-import nl.codecontrol.todoapp.restassured.config.RestAssuredRequestSpecs;
-import nl.codecontrol.todoapp.restassured.mongo.mongoTestClient.MongoTestClientSingleton;
-import nl.codecontrol.todoapp.restassured.testdata.TestdataLoader;
+import nl.codecontrol.todoapp.api.restassured.RestAssuredRequestSpecs;
+import nl.codecontrol.todoapp.api.mongo.mongoTestClient.MongoTestClientSingleton;
+import nl.codecontrol.todoapp.api.testdata.TestdataLoader;
 import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;

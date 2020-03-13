@@ -1,4 +1,4 @@
-package nl.codecontrol.todoapp.restassured.matchers;
+package nl.codecontrol.todoapp.api.matchers;
 
 import com.google.common.io.Resources;
 import org.hamcrest.Description;
