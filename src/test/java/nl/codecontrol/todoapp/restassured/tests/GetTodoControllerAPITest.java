@@ -12,40 +12,60 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.nullValue;
 
-
-@SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.DEFINED_PORT)
+@SpringBootTest(webEnvironment=SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ExtendWith(APICallbacks.class)
 class GetTodoControllerAPITest {
 
     @Test
-    public void Given_EmptyTodoCollection_When_RetrievingTodos_Then_EmptyListIsReturned() {
+    public void Given_EmptyTodoCollection_When_RetrievingNonExistingTodo_Then_ErrorIsReturned() {
+        final String id = "5e668ff91f72294573382441";
+
         //@formatter:off
         given().
         when().
-                get("/api/todos").
+                get("/api/todos/{id}", id).
         then().
-                body("", is(emptyList())).
-                statusCode(200);
+                statusCode(404).
+                body(is(""));
         //@formatter:on
     }
 
     @Test
-    public void Given_SingleTodoInCollection_When_RetrievingTodos_Then_SingletonListIsReturned() {
+    public void Given_SingleTodoInCollection_When_RetrievingTodo_Then_TodoIsReturned() {
+        final String id = "5e668ff91f72294573382441";
 
         insertTestdata("todos", "singleTodo");
 
         //@formatter:off
         given().
         when().
-                get("/api/todos").
+                get("/api/todos/{id}", id).
         then().
-                body("$.size()", is(1)).
-                body("[0].id", is(not(nullValue()))).
-                body("[0].title", is("Test")).
-                body("[0].completed", is(false)).
-                body("[0].createdAt", is(not(nullValue()))).
-                statusCode(200);
+                statusCode(200).
+                body("id", is(id)).
+                body("title", is("Test")).
+                body("completed", is(false)).
+                body("createdAt", is(not(nullValue())));
         //@formatter:on
     }
 
+    @Test
+    public void Given_MultipleTodosInCollection_When_RetrievingTodo_Then_TodoIsReturned() {
+
+        final String id = "5e668ff91f72294573382442";
+
+        insertTestdata("todos", "multipleTodos");
+
+        //@formatter:off
+        given().
+        when().
+                get("/api/todos/{id}", id).
+        then().
+                statusCode(200).
+                body("id", is(id)).
+                body("title", is("Test2")).
+                body("completed", is(false)).
+                body("createdAt", is(not(nullValue())));
+        //@formatter:on
+    }
 }
