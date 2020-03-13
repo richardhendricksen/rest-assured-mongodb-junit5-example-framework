@@ -45,13 +45,13 @@ class PostTodoControllerAPITest {
     }
 
     @Test
-    public void Given_NonTodoCollection_When_AddingTodo_Then_DatabaseContainsBothTodos() {
+    public void Given_ExistingTodoCollection_When_AddingTodo_Then_DatabaseContainsAllTodos() {
         insertTestdata("todos", "singleTodo");
 
         //@formatter:off
         given().
                 contentType(ContentType.JSON).
-                body("{\"title\": \"Test\"}").
+                body("{\"title\": \"NewTest\"}").
         when().
                 post("/api/todos").
         then().
