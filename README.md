@@ -1,4 +1,4 @@
-# REST-Assured Mongodb JUnit5 example framework
+# REST Assured Mongodb JUnit5 example framework ![CI](https://github.com/richardhendricksen/rest-assured-mongodb-junit5-example-framework/workflows/CI/badge.svg)
 
 This repository contains an example testframework for testing REST based services using REST Assured.  
 Custom written MongoAssert framework is used to validate the state of the embedded MongoDB during tests. All the tests and boilerplate are written using JUnit5.
