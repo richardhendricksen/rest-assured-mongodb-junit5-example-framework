@@ -7,12 +7,12 @@ import org.bson.conversions.Bson;
 import org.hamcrest.Matcher;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import static java.time.temporal.ChronoUnit.MICROS;
+import static java.util.Collections.singletonList;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.awaitility.Awaitility.await;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -28,47 +28,43 @@ public class MongoAssuredCollection {
         this.collection = collection;
     }
 
-    public MongoAssuredResults find(Bson filter) {
-        FindIterable<Document> result = MongoTestClientSingleton.getInstance().getMongo()
+    public MongoAssuredResult find(Bson filter) {
+        FindIterable<Document> result = MongoTestClientSingleton.getInstance().getMongoClient()
                 .getDatabase(database)
                 .getCollection(collection)
                 .find(filter);
 
         List<Document> documents = StreamSupport.stream(result.spliterator(), false).collect(Collectors.toList());
 
-        return new MongoAssuredResults(documents, this);
+        return new MongoAssuredResult(documents);
     }
 
 
-    public MongoAssuredResults find() {
-        FindIterable<Document> result = MongoTestClientSingleton.getInstance().getMongo()
+    public MongoAssuredResult find() {
+        FindIterable<Document> result = MongoTestClientSingleton.getInstance().getMongoClient()
                 .getDatabase(database)
                 .getCollection(collection)
                 .find();
 
-        List<Document> documents = new ArrayList<>();
+        List<Document> documents = StreamSupport.stream(result.spliterator(), false).collect(Collectors.toList());
 
-        for (Document document : result) {
-            documents.add(document);
-        }
-
-        return new MongoAssuredResults(documents, this);
+        return new MongoAssuredResult(documents);
     }
 
     public MongoAssuredResult findFirst() {
-        Document document = MongoTestClientSingleton.getInstance().getMongo()
+        Document document = MongoTestClientSingleton.getInstance().getMongoClient()
                 .getDatabase(database)
                 .getCollection(collection)
                 .find().first();
 
-        return new MongoAssuredResult(document);
+        return new MongoAssuredResult(singletonList(document));
     }
 
     public MongoAssuredCollection size(Matcher<Integer> matcher) {
-        long count = MongoTestClientSingleton.getInstance().getMongo()
+        long count = MongoTestClientSingleton.getInstance().getMongoClient()
                 .getDatabase(database)
                 .getCollection(collection)
-                .count();
+                .countDocuments();
         assertThat(Math.toIntExact(count), matcher);
 
         return this;
@@ -83,10 +79,10 @@ public class MongoAssuredCollection {
     public MongoAssuredCollection waitUntilPopulated() {
 
         await().atMost(10, SECONDS).pollInterval(Duration.of(500, MICROS)).until(() ->
-                MongoTestClientSingleton.getInstance().getMongo()
+                MongoTestClientSingleton.getInstance().getMongoClient()
                         .getDatabase(database)
                         .getCollection(collection)
-                        .count() != 0
+                        .countDocuments() != 0
         );
 
         return this;
@@ -95,10 +91,10 @@ public class MongoAssuredCollection {
     public MongoAssuredCollection waitUntilPopulated(int size) {
 
         await().atMost(10, SECONDS).pollInterval(Duration.of(500, MICROS)).until(() ->
-                MongoTestClientSingleton.getInstance().getMongo()
+                MongoTestClientSingleton.getInstance().getMongoClient()
                         .getDatabase(database)
                         .getCollection(collection)
-                        .count() == size
+                        .countDocuments() == size
         );
 
         return this;
@@ -107,7 +103,7 @@ public class MongoAssuredCollection {
     public MongoAssuredCollection waitUntilPopulated(Bson filter) {
 
         await().atMost(10, SECONDS).pollInterval(Duration.of(500, MICROS)).until(() -> {
-            FindIterable<Document> result = MongoTestClientSingleton.getInstance().getMongo()
+            FindIterable<Document> result = MongoTestClientSingleton.getInstance().getMongoClient()
                     .getDatabase(database)
                     .getCollection(collection)
                     .find(filter);

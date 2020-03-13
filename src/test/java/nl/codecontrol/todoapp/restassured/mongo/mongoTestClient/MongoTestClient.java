@@ -27,7 +27,7 @@ public class MongoTestClient {
         mongo.close();
     }
 
-    public MongoClient getMongo() {
+    public MongoClient getMongoClient() {
         return mongo;
     }
 
