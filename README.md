@@ -23,7 +23,7 @@ The REST Assured tests use their own embedded mongodb for the tests. The framewo
 Between tests the collections are cleared.  
 MongoAssured is used to validate the state of the database during test.  
 
-### Running test
+### Running tests
 Run the tests using `mvn clean verify`.  
 
 ### Set state in database
@@ -31,7 +31,7 @@ The framework has methods to insert testdata into the database to create the nee
 ```java
 insertTestdata("todos", "singleTodo");
 ```
-Which refers to collection `todo` and resourcefile `src\test\resources\testdata\todos\singleTodo.json`.
+Which refers to collection `todos` and resourcefile `src\test\resources\testdata\todos\singleTodo.json`.
 
 ### Validating database state
 For validating the state of the database a custom MongoAssured framework is used. Example usage:
